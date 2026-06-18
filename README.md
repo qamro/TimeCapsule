@@ -70,17 +70,6 @@ src/
 
 
 
-
-```bash
-cp .env.example .env
-```
-
-Fill in your Firebase values.
-
-### 4. Firestore rules (after testing)
-
-
-
 ---
 
 
