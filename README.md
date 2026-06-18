@@ -70,14 +70,6 @@ src/
 
 
 
-### 2. Firebase
-
-1. Go to **console.firebase.google.com** → Create project
-2. Enable **Authentication** → Google sign-in
-3. Enable **Firestore Database** → Start in test mode
-4. Register a Web App → copy config
-
-### 3. Environment variables
 
 ```bash
 cp .env.example .env
