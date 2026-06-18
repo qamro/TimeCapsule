@@ -68,15 +68,7 @@ src/
 
 ---
 
-## Setup
 
-### 1. Install
-
-```bash
-git clone https://github.com/yourusername/timecapsule.git
-cd timecapsule
-npm install
-```
 
 ### 2. Firebase
 
