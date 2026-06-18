@@ -154,3 +154,29 @@
     padding: 36px 24px;
   }
 }
+
+/* ── Extra mobile fixes ── */
+@media (max-width: 480px) {
+  .card {
+    padding: 28px 18px;
+    border-radius: var(--r-lg);
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .sub {
+    font-size: 13px;
+  }
+
+  .googleBtn {
+    font-size: 13px;
+    padding: 13px 16px;
+  }
+
+  .back {
+    top: 18px;
+    left: 16px;
+  }
+}

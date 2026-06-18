@@ -387,3 +387,74 @@
     padding: 24px;
   }
 }
+
+/* ── Extra mobile fixes ── */
+@media (max-width: 480px) {
+  .nav {
+    padding: 0 16px;
+    height: 58px;
+  }
+
+  .navLogoText {
+    font-size: 16px;
+  }
+
+  .hero {
+    padding: 90px 16px 50px;
+  }
+
+  .heroTitle {
+    font-size: 30px;
+  }
+
+  .heroSub {
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  .heroCtas {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .ctaPrimary {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 24px;
+    font-size: 14px;
+  }
+
+  .heroCard {
+    padding: 18px;
+  }
+
+  .heroCardTitle {
+    font-size: 15px;
+  }
+
+  .features {
+    padding: 48px 16px;
+  }
+
+  .featuresTitle {
+    font-size: 24px;
+  }
+
+  .featureCard {
+    padding: 16px;
+  }
+
+  .ctaBox {
+    padding: 28px 18px;
+  }
+
+  .ctaTitle {
+    font-size: 22px;
+  }
+
+  .footer {
+    padding: 20px 16px;
+  }
+}

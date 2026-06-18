@@ -390,3 +390,49 @@
 
   .progress::before { display: none; }
 }
+
+/* ── Extra mobile fixes ── */
+@media (max-width: 480px) {
+  .inner {
+    padding: 72px 12px 48px;
+  }
+
+  .stepTitle {
+    font-size: 22px;
+  }
+
+  .textarea {
+    min-height: 220px;
+    font-size: 14px;
+  }
+
+  .input {
+    font-size: 14px;
+  }
+
+  .summary {
+    padding: 14px;
+  }
+
+  .summaryRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .sealedIcon {
+    font-size: 52px;
+  }
+
+  .sealedTitle {
+    font-size: 24px;
+  }
+
+  .sealedSub {
+    font-size: 13px;
+  }
+
+  .dropZone {
+    min-height: 160px;
+  }
+}

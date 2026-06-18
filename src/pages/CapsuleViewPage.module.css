@@ -203,3 +203,43 @@
     align-items: flex-start;
   }
 }
+
+/* ── Extra mobile fixes ── */
+@media (max-width: 480px) {
+  .inner {
+    padding: 72px 12px 48px;
+    gap: 22px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .letterContent {
+    padding: 22px 16px;
+  }
+
+  .letterLine {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .headerBadge {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .deleteConfirm {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .deleteText {
+    text-align: center;
+  }
+}
