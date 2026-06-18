@@ -88,4 +88,12 @@ users/{uid}/
 
 ## License
 
-MIT — Seal your memories. Trust the future.
+**MIT** 
+
+---
+
+<div align="center">
+    
+## Seal your memories. Trust the future.
+
+</div>
