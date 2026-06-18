@@ -394,8 +394,34 @@
     padding: 6px 12px;
   }
 
+  /* Dropdown anchored to right edge, never overflows */
   .dropdown {
-    width: calc(100vw - 24px);
-    right: -8px;
+    position: fixed;
+    top: 66px;
+    left: 12px;
+    right: 12px;
+    width: auto;
+    border-radius: 16px;
+  }
+
+  .profileAvatarWrap {
+    width: 42px;
+    height: 42px;
+  }
+
+  .profileAvatarInitial {
+    font-size: 18px;
+  }
+
+  .profileHeader {
+    padding: 14px 14px 12px;
+  }
+
+  .profileSection {
+    padding: 10px 14px;
+  }
+
+  .profileItem {
+    padding: 12px 14px;
   }
 }
