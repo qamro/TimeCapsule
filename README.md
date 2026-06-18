@@ -114,16 +114,6 @@ npm run dev
 
 ---
 
-## Deploy to Vercel
-
-```bash
-npm i -g vercel
-vercel
-```
-
-Add environment variables in Vercel dashboard → Settings → Environment Variables.
-
----
 
 ## Data Model
 
