@@ -95,22 +95,7 @@ Fill in your Firebase values.
 
 ### 4. Firestore rules (after testing)
 
-```
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /users/{uid}/{document=**} {
-      allow read, write: if request.auth.uid == uid;
-    }
-  }
-}
-```
 
-### 5. Run locally
-
-```bash
-npm run dev
-```
 
 ---
 
