@@ -1,24 +1,24 @@
 .card {
   position: relative;
   border-radius: var(--r-lg);
-  padding: 24px;
+  padding: 20px;
   border: 1px solid;
   overflow: hidden;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: border-color 0.4s, box-shadow 0.4s;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  min-height: 200px;
+  gap: 14px;
+  min-height: 210px;
 }
 
 .locked {
-  background: linear-gradient(135deg, rgba(17, 14, 21, 0.9), rgba(22, 18, 28, 0.9));
+  background: linear-gradient(135deg, rgba(17,14,21,0.9), rgba(22,18,28,0.9));
   border-color: var(--border);
   cursor: default;
 }
 
 .unlocked {
-  background: linear-gradient(135deg, rgba(20, 18, 14, 0.95), rgba(26, 22, 16, 0.95));
+  background: linear-gradient(135deg, rgba(20,18,14,0.95), rgba(26,22,16,0.95));
   border-color: var(--gold-border);
   cursor: pointer;
   animation: unlockGlow 3s ease-in-out infinite;
@@ -26,7 +26,20 @@
 
 .unlocked:hover {
   border-color: var(--gold);
-  box-shadow: 0 12px 40px rgba(201, 169, 110, 0.15);
+  box-shadow: 0 12px 40px rgba(201,169,110,0.15);
+}
+
+.confirming {
+  border-color: rgba(224,112,112,0.35) !important;
+  box-shadow: 0 0 30px rgba(224,112,112,0.06) !important;
+}
+
+/* ── Card top ── */
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
 }
 
 /* ── Badge ── */
@@ -39,47 +52,238 @@
   text-transform: uppercase;
   padding: 4px 10px;
   border-radius: var(--r-pill);
-  width: fit-content;
 }
 
 .badgeLocked {
-  background: rgba(245, 240, 232, 0.06);
+  background: rgba(245,240,232,0.06);
   color: var(--cream-40);
   border: 1px solid var(--border);
 }
 
 .badgeUnlocked {
-  background: rgba(201, 169, 110, 0.12);
+  background: rgba(201,169,110,0.12);
   color: var(--gold);
   border: 1px solid var(--gold-border);
 }
 
+/* ── Delete button ── */
+.deleteBtn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(224,112,112,0.07);
+  border: 1px solid rgba(224,112,112,0.12);
+  color: rgba(224,112,112,0.4);
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  font-family: var(--font-body);
+  padding: 0;
+}
+
+.deleteBtn:hover {
+  background: rgba(224,112,112,0.15);
+  color: var(--error);
+  border-color: rgba(224,112,112,0.3);
+  transform: scale(1.1);
+}
+
+/* ── Overlay ── */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 8, 14, 0.97);
+  border-radius: var(--r-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  padding: 18px;
+}
+
+/* ── Confirm content ── */
+.confirmContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.warnIcon {
+  font-size: 30px;
+  line-height: 1;
+  filter: drop-shadow(0 0 12px rgba(201,169,110,0.4));
+}
+
+.warnTitle {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--cream);
+  font-style: italic;
+}
+
+.warnMsg {
+  font-size: 12px;
+  color: var(--cream-60);
+  line-height: 1.6;
+}
+
+.warnMsg em {
+  color: var(--cream-80);
+  font-style: italic;
+}
+
+.warnMsg span {
+  display: block;
+  font-size: 11px;
+  color: var(--cream-40);
+  margin-top: 4px;
+}
+
+/* ── Countdown ring ── */
+.countdownRing {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ringSVG {
+  position: absolute;
+  inset: 0;
+  transform: rotate(-90deg);
+  width: 44px;
+  height: 44px;
+}
+
+.ringBg {
+  fill: none;
+  stroke: rgba(224,112,112,0.12);
+  stroke-width: 2.5;
+}
+
+.ringFill {
+  fill: none;
+  stroke: var(--error);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s linear;
+}
+
+.ringSecs {
+  position: relative;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--error);
+  z-index: 1;
+}
+
+/* ── Confirm buttons ── */
+.confirmBtns {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+}
+
+.deleteForever {
+  width: 100%;
+  padding: 9px 14px;
+  border-radius: var(--r-pill);
+  background: rgba(224,112,112,0.08);
+  border: 1px solid rgba(224,112,112,0.2);
+  color: rgba(224,112,112,0.45);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: not-allowed;
+  font-family: var(--font-body);
+  transition: all 0.4s;
+  letter-spacing: 0.02em;
+}
+
+.deleteReady {
+  background: rgba(224,112,112,0.15) !important;
+  border-color: var(--error) !important;
+  color: var(--error) !important;
+  cursor: pointer !important;
+  animation: sealPulse 1.5s ease-in-out infinite;
+}
+
+.deleteReady:hover {
+  background: rgba(224,112,112,0.25) !important;
+}
+
+.keepBtn {
+  width: 100%;
+  padding: 8px 14px;
+  border-radius: var(--r-pill);
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--cream-60);
+  font-size: 12px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: background 0.2s, color 0.2s;
+}
+
+.keepBtn:hover {
+  background: var(--cream-05);
+  color: var(--cream);
+}
+
+/* ── Deleting state ── */
+.deletingState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.deletingIcon {
+  font-size: 32px;
+  color: var(--gold);
+  opacity: 0.6;
+}
+
+.deletingText {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--cream-60);
+}
+
 /* ── Type icon ── */
 .typeIcon {
-  font-size: 28px;
+  font-size: 26px;
   line-height: 1;
 }
 
 /* ── Body ── */
-.body {
-  flex: 1;
-}
+.body { flex: 1; }
 
 .title {
   font-family: var(--font-serif);
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 600;
   color: var(--cream);
   line-height: 1.3;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
-.locked .title {
-  color: var(--cream-60);
-}
+.locked .title { color: var(--cream-60); }
 
 .type {
-  font-size: 11px;
+  font-size: 10px;
   color: var(--cream-40);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -114,7 +318,6 @@
   font-weight: 500;
 }
 
-/* ── Countdown ── */
 .countdown {
   display: flex;
   flex-direction: column;
@@ -136,7 +339,6 @@
   letter-spacing: 0.08em;
 }
 
-/* ── Open CTA ── */
 .openCta {
   font-size: 12px;
   font-weight: 600;
@@ -144,14 +346,14 @@
   letter-spacing: 0.04em;
 }
 
-/* ── Shimmer on locked ── */
+/* ── Shimmer ── */
 .shimmer {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     105deg,
     transparent 40%,
-    rgba(245, 240, 232, 0.03) 50%,
+    rgba(245,240,232,0.03) 50%,
     transparent 60%
   );
   background-size: 200% 100%;
@@ -159,17 +361,15 @@
   pointer-events: none;
 }
 
+/* ── Mobile ── */
 @media (max-width: 600px) {
   .card {
-    padding: 18px;
-    min-height: 180px;
+    padding: 16px;
+    min-height: 190px;
   }
 
-  .title {
-    font-size: 16px;
-  }
-
-  .countdownVal {
-    font-size: 14px;
-  }
+  .title { font-size: 15px; }
+  .countdownVal { font-size: 14px; }
+  .warnTitle { font-size: 15px; }
+  .warnMsg { font-size: 11px; }
 }
