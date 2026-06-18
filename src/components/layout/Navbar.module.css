@@ -73,9 +73,7 @@
   background: var(--cream-05);
 }
 
-.link.active {
-  color: var(--gold);
-}
+.link.active { color: var(--gold); }
 
 .createBtn {
   font-size: 13px;
@@ -105,11 +103,14 @@
   transition: background 0.2s;
 }
 
-.signInBtn:hover {
-  background: var(--gold-glow);
+.signInBtn:hover { background: var(--gold-glow); }
+
+/* ── Avatar wrap — THIS IS THE FIX ── */
+/* position: relative here makes the dropdown position relative to this element */
+.avatarWrap {
+  position: relative;
 }
 
-/* ── Avatar ── */
 .avatar {
   width: 34px;
   height: 34px;
@@ -139,51 +140,221 @@
   object-fit: cover;
 }
 
-/* ── Dropdown ── */
+/* ── Dropdown — positioned right under avatar ── */
 .dropdown {
   position: absolute;
-  top: 72px;
-  right: 24px;
-  width: 220px;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 280px;
   background: #1A1520;
   border: 1px solid var(--border-2);
-  border-radius: var(--r-lg);
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255,249,232,0.04);
   z-index: 200;
 }
 
-.overlay {
-  position: fixed;
+/* ── Profile panel inside dropdown ── */
+.profilePanel {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.profileHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 18px 14px;
+  background: linear-gradient(135deg, rgba(201,169,110,0.07), rgba(20,16,24,0.9));
+  border-bottom: 1px solid var(--border);
+}
+
+.profileAvatarWrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 2px solid rgba(201,169,110,0.3);
+  transition: border-color 0.2s;
+}
+
+.profileAvatarWrap:hover { border-color: var(--gold); }
+
+.profileAvatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profileAvatarInitial {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--bg);
+}
+
+.profileAvatarOverlay {
+  position: absolute;
   inset: 0;
-  z-index: 99;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  border-radius: 50%;
 }
 
-.dropUser {
-  padding: 16px 18px 12px;
+.profileAvatarWrap:hover .profileAvatarOverlay { opacity: 1; }
+
+.profileInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 2px;
 }
 
-.dropName {
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.profileName {
   font-size: 14px;
   font-weight: 600;
   color: var(--cream);
-  margin-bottom: 2px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-.dropEmail {
+.profileEmail {
   font-size: 11px;
   color: var(--cream-40);
   overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-.dropDivider {
+.editBtn {
+  background: none;
+  border: none;
+  font-size: 11px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  padding: 2px;
+  flex-shrink: 0;
+}
+
+.editBtn:hover { opacity: 1; }
+
+.inlineEdit {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.inlineInput {
+  flex: 1;
+  background: rgba(255,249,232,0.07);
+  border: 1px solid rgba(201,169,110,0.3);
+  border-radius: 8px;
+  padding: 4px 8px;
+  color: var(--cream);
+  font-size: 13px;
+  font-family: var(--font-body);
+  outline: none;
+  min-width: 0;
+}
+
+.saveBtn {
+  background: var(--gold);
+  border: none;
+  border-radius: 7px;
+  padding: 4px 9px;
+  color: var(--bg);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-family: var(--font-body);
+  transition: opacity 0.2s;
+}
+
+.saveBtn:hover { opacity: 0.85; }
+
+/* Section */
+.profileSection {
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sectionLabel {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cream-40);
+  margin-bottom: 7px;
+}
+
+.descRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.descText {
+  font-size: 12px;
+  color: var(--cream-60);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.descEditWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.descInput {
+  width: 100%;
+  background: rgba(255,249,232,0.06);
+  border: 1px solid rgba(201,169,110,0.25);
+  border-radius: 10px;
+  padding: 8px 10px;
+  color: var(--cream);
+  font-size: 12px;
+  font-family: var(--font-body);
+  outline: none;
+  resize: none;
+  line-height: 1.5;
+}
+
+.descInput::placeholder { color: var(--cream-40); }
+
+/* Divider */
+.profileDivider {
   height: 1px;
   background: var(--border);
 }
 
-.dropItem {
+/* Items */
+.profileItem {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -200,18 +371,13 @@
   font-family: var(--font-body);
 }
 
-.dropItem:hover {
+.profileItem:hover {
   background: var(--cream-05);
   color: var(--cream);
 }
 
-.dropSignOut {
-  color: var(--error);
-}
-
-.dropSignOut:hover {
-  background: rgba(224, 112, 112, 0.08);
-}
+.profileSignOut { color: var(--error); }
+.profileSignOut:hover { background: rgba(224,112,112,0.08); }
 
 /* ── Mobile ── */
 @media (max-width: 600px) {
@@ -220,21 +386,16 @@
     height: 56px;
   }
 
-  .logoText {
-    font-size: 16px;
-  }
-
-  .link {
-    display: none;
-  }
+  .logoText { font-size: 16px; }
+  .link { display: none; }
 
   .createBtn {
     font-size: 12px;
-    padding: 6px 14px;
+    padding: 6px 12px;
   }
 
   .dropdown {
-    right: 12px;
     width: calc(100vw - 24px);
+    right: -8px;
   }
 }
