@@ -1,7 +1,3 @@
-/**
- * Firestore service — TimeCapsule
- * Clean, simple, no enableNetwork() calls
- */
 import {
   collection,
   doc,
@@ -10,6 +6,7 @@ import {
   getDocs,
   updateDoc,
   deleteDoc,
+  setDoc,
   query,
   where,
   orderBy,
@@ -21,6 +18,43 @@ import { db } from './firebase'
 
 // ── Collections ──────────────────────────────
 const capsulesCol = (uid) => collection(db, 'users', uid, 'capsules')
+const userDoc     = (uid) => doc(db, 'users', uid)
+
+// ── User Profile ─────────────────────────────
+
+/** Get user profile from Firestore */
+export async function getUserProfile(uid) {
+  try {
+    const snap = await getDoc(userDoc(uid))
+    if (!snap.exists()) return null
+    return snap.data()
+  } catch (e) {
+    console.error('getUserProfile error:', e.message)
+    return null
+  }
+}
+
+/** Save user profile to Firestore */
+export async function saveUserProfile(uid, data) {
+  try {
+    await setDoc(userDoc(uid), {
+      ...data,
+      updatedAt: serverTimestamp(),
+    }, { merge: true })
+  } catch (e) {
+    console.error('saveUserProfile error:', e.message)
+  }
+}
+
+/** Subscribe to user profile changes in realtime */
+export function subscribeUserProfile(uid, callback) {
+  return onSnapshot(userDoc(uid), (snap) => {
+    if (snap.exists()) callback(snap.data())
+    else callback(null)
+  }, (err) => {
+    console.error('subscribeUserProfile error:', err.message)
+  })
+}
 
 // ── Capsules ─────────────────────────────────
 
@@ -28,9 +62,9 @@ const capsulesCol = (uid) => collection(db, 'users', uid, 'capsules')
 export async function createCapsule(uid, data) {
   const ref = await addDoc(capsulesCol(uid), {
     ...data,
-    createdAt:  serverTimestamp(),
-    updatedAt:  serverTimestamp(),
-    opened:     false,
+    createdAt: serverTimestamp(),
+    updatedAt: serverTimestamp(),
+    opened:    false,
   })
   return ref.id
 }
