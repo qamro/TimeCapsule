@@ -96,7 +96,7 @@ users/{uid}/
 
 ## 👨‍💻 Author
 
-Developed by:
+
 
 **Mohamed Qamar Eddine Bakhouche**
 
