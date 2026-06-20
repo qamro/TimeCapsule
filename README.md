@@ -99,7 +99,7 @@ users/{uid}/
 
 
 
-Developed by:
+
 
 
 
