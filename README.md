@@ -98,8 +98,6 @@ users/{uid}/
 
 
 
-Developed by:
-
 
 
 **Mohamed Qamar Eddine Bakhouche**
