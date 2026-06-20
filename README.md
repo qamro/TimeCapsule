@@ -98,7 +98,6 @@ users/{uid}/
 
 
 
-Developed by:
 
 
 
